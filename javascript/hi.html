@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+     <!-- Internal CSS -->
+      <style>
+    /* Body background style (Internal CSS example) */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Element selector for all h2 */
+    h2 {
+        color: #ffffff;
+        margin-bottom: 15px;
+        font-family: 'Montserrat', sans-serif;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+    
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: #f8f9fa;
+        background-image: linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)), url('city.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        color: #495057;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Main header with gradient */
+    header {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Section styling with RGBA transparency */
+    section {
+        background-color: rgba(255, 255, 255, 0.95);
+        margin: 2rem auto;
+        padding: 1.5rem;
+        width: 90%;
+        max-width: 1000px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Section headers with gradient */
+    section h2 {
+        background: linear-gradient(to right, #667eea, #764ba2);
+        color: white;
+        padding: 1rem;
+        margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+        border-radius: 12px 12px 0 0;
+        font-weight: 600;
+    }
+
+    /* Button with HEX colors */
+    .btn {
+        background-color: #4e54c8;
+        color: #ffffff;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+        background-color: #6a11cb;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Footer with dark background */
+    footer {
+        background: linear-gradient(135deg, #434343 0%, #000000 100%);
+        color: #f8f9fa;
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+    }
+
+    /* ID selector for main header */
+    #mainHeader {
+        background: linear-gradient(to right, #4776E6, #8E54E9);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Class selector for event cards */
+    .eventCard {
+        border: none;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    .eventCard:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Grouping selector for h3 and p */
+    h3, p {
+        margin: 10px 0;
+        color: #495057;
+    }
+
+    /* Navigation styles */
+    nav ul {
+        background: linear-gradient(to right, #4b6cb7, #182848);
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav li {
+        display: inline-block;
+        padding: 1rem 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    nav li:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+    }
+
+    /* Table styles */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    th {
+        background: linear-gradient(to right, #4b6cb7, #182848);
+        color: white;
+        padding: 1rem;
+        text-align: left;
+    }
+
+    td {
+        padding: 0.75rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    tr:hover {
+        background-color: #e9ecef;
+    }
+
+    /* Form styles */
+    form {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    input, select, textarea {
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        padding: 0.75rem;
+        margin: 0.5rem 0 1rem 0;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 0 0.2rem rgba(106,17,203,0.25);
+        outline: none;
+    }
+
+    /* Image gallery styles */
+    .event-img {
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    .event-img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Highlight text */
+    .highlight {
+        color: #6a11cb;
+        font-weight: 600;
+    }
+
+    /* Date text */
+    .date {
+        color: #6c757d;
+        font-style: italic;
+    }
+
+    /* News article styles */
+    .news-article {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Responsive design adjustments */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        nav li {
+            width: 100%;
+            text-align: center;
+        }
+        
+        section {
+            width: 95%;
+            padding: 1rem;
+        }
+    }
+
+    /* Animation for section entries */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    section {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    /* Delay animations for sequential loading */
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+    section:nth-child(5) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+     <header>
+        <h1>Welcome everyone!!</h1>
+        <p class="lead-text">Discover the latest happenings in your neighborhood and stay connected with your community</p>
+    </header>
+    
+    <main>
+        
+         
+    </main>
+    <!-- Navigation -->
+    <nav>
+          <h1 style="color:bisque; margin-bottom: 10px;">Community Event Portal</h1> 
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#videoInvite">Video</a></li>
+            <li><a href="#preferences">Preferences</a></li>
+            <li><a href="#geolocation">Location</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="help.html" target="_blank">Help</a></li>
+        </ul>
+    </nav>
+   
+    <!-- Main Content -->
+    <main>
+        <!-- Welcome Section -->
+        <section id="home">
+            <div id="welcomeBanner">
+                
+                <p>We're glad you're here! <span style="color:red; font-weight: bold;">Special offer: Free entry for early birds!</span></p>
+                <p class="highlight">Stay updated with your local community events.</p>
+                 
+                  <a href="#register" class="cta-button">Register for Events</a><br><br><br>
+
+                   <div class="news-article">
+        <h2>Community Bulletin</h2>
+        <p>The annual summer festival is just around the corner, and preparations are in full swing. This year's event promises to be bigger than ever, with more food vendors, live music performances, and activities for all ages. The festival committee has been working tirelessly to ensure a memorable experience for all attendees.</p>
+        
+        <p>Local farmers have reported an excellent growing season, and the weekly farmers market will feature an abundance of fresh produce. New this year is the "Meet Your Farmer" program, where visitors can learn directly from the growers about sustainable farming practices.</p>
+        
+        <p>The city council has approved funding for renovations to the community park. Work is scheduled to begin in September and will include new playground equipment, walking paths, and picnic areas. During construction, alternative recreation spaces will be available at the elementary school grounds.</p>
+        
+        <p>Volunteers are needed for the upcoming neighborhood cleanup day on June 10th. Participants will receive free t-shirts and lunch. This is a great opportunity to meet your neighbors while helping to keep our community beautiful. Sign-up sheets are available at the community center.</p>
+    </div>
+<br><br><br>
+                  <h2>Community Resources</h2>
+            
+            <ul class="event-list">
+                <li><a href="#library">Public Library Services</a></li>
+                <li><a href="#recycling">Recycling Program</a></li>
+                <li><a href="#parks">Park Facilities</a></li>
+            </ul><br><br><br>
+            
+            <h2>Upcoming Meeting Schedule</h2>
+            <ol>
+                <li>City Council - June 5</li>
+                <li>Planning Commission - June 12</li>
+                <li>Public Safety - June 19</li>
+            </ol>
+            </div>
+        </section>
+
+        <!-- Events Gallery -->
+        <section id="events">
+            <h2>Gallery of Past Events</h2>
+            <table>
+                <caption>Memorable Moments from Our Community Events</caption>
+                <tr>
+                    <td><img src="music.jpg" alt="Music Fest" title="Music Fest 2023" class="event-img"></td>
+                    <td><img src="food.jpg" alt="Food Carnival" title="Food Carnival 2023" class="event-img"></td>
+                    <td><img src="run.jpg" alt="Charity Run" title="Charity Run 2023" class="event-img"></td>
+                </tr>
+                <tr>
+                    <td><img src="art.jpg" alt="Art Exhibition" title="Art Exhibition 2023" class="event-img"></td>
+                    <td><img src="culture.jpg" alt="Cultural Night" title="Cultural Night 2023" class="event-img"></td>
+                    <td><img src="book.jpg" alt="Book Fair" title="Book Fair 2023" class="event-img"></td>
+                </tr>
+            </table>
+        </section>
+        <h2>Upcoming Events</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Available Slots</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Summer Music Festival</td>
+                <td>June 15, 2023</td>
+                <td>4:00 PM</td>
+                <td>City Park</td>
+                <td>120/200</td>
+            </tr>
+            <tr>
+                <td>Farmers Market</td>
+                <td>June 17, 2023</td>
+                <td>8:00 AM</td>
+                <td>Main Square</td>
+                <td>Open</td>
+            </tr>
+            <tr>
+                <td>Community Workshop</td>
+                <td>June 20, 2023</td>
+                <td>6:30 PM</td>
+                <td>Community Center</td>
+                <td>15/30</td>
+            </tr>
+            <tr>
+                <td>Book Fair</td>
+                <td>June 22, 2023</td>
+                <td>10:00 AM</td>
+                <td>Public Library</td>
+                <td>45/60</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="eventCard">
+        <h2>Summer Festival</h2>
+        <p>Join us for music, food, and fun!</p>
+        <p>June 15-17, 2023</p>
+    </div>
+      
+
+        <!-- Registration Form -->
+        <section id="register">
+            <h2>Register for an Event</h2>
+            <form id="eventForm" onsubmit="showConfirmation(event)">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" placeholder="Your full name" required autofocus><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required><br><br>
+
+                <label for="date">Event Date:</label><br>
+                <input type="date" id="date" name="date" required><br><br>
+
+                <label for="eventType">Event Type:</label><br>
+                <select id="eventType" name="eventType" required>
+                    <option value="">--Select--</option>
+                    <option value="music">Music</option>
+                    <option value="food">Food</option>
+                    <option value="sports">Sports</option>
+                </select><br><br>
+
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="40" placeholder="Tell us something..."></textarea><br><br>
+
+                <input type="submit" value="Register">
+                <output id="confirmationMsg"></output>
+            </form>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback">
+            <h2>Give Your Feedback</h2>
+            <form id="feedbackForm">
+                <label for="phone">Phone Number:</label><br>
+                <input type="text" id="phone" placeholder="10-digit number" onblur="validatePhone()"><br><br>
+
+                <label for="feeSelect">Select Event Type:</label><br>
+                <select id="feeSelect" onchange="showFee()">
+                    <option value="">--Choose Event--</option>
+                    <option value="Music - $20">Music - $20</option>
+                    <option value="Food - $10">Food - $10</option>
+                    <option value="Sports - $15">Sports - $15</option>
+                </select>
+                <p id="feeDisplay"></p>
+
+                <label for="feedbackText">Your Comments:</label><br>
+                <textarea id="feedbackText" rows="4" cols="40" placeholder="Type here..." onkeyup="countChars()"></textarea>
+                <p>Characters typed: <span id="charCount">0</span></p>
+
+                <br>
+                <input type="button" value="Submit Feedback" onclick="showFeedbackConfirmation()">
+            </form>
+
+            <br>
+             <div class="image-container">
+            <img src="thumb.jpg" alt="Event Thumbnail" width="150" ondblclick="enlargeImage(this)">
+        </div>
+        
+        <!-- Add this overlay div -->
+        <div class="overlay" onclick="closeEnlarged()"></div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="videoInvite">
+            <h2>Event Promo Video</h2>
+            <video id="promoVideo" width="400" controls oncanplay="videoReadyMessage()">
+                <source src="vid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p id="videoStatus"></p>
+        </section>
+
+        <!-- Preferences Section -->
+        <section id="preferences">
+            <h2>Save Your Preferences</h2>
+            <label for="preferredEvent">Choose your preferred event type:</label>
+            <select id="preferredEvent" onchange="savePreference()">
+                <option value="">--Select--</option>
+                <option value="Music">Music</option>
+                <option value="Food">Food</option>
+                <option value="Sports">Sports</option>
+            </select>
+            <p id="savedPreferenceMessage"></p>
+            <button onclick="clearPreferences()">Clear Preferences</button>
+        </section>
+
+        <!-- Geolocation Section -->
+        <section id="geolocation">
+            <h2>Find Nearby Events</h2>
+            <button onclick="getLocation()">📍 Find My Location</button>
+            <p id="locationStatus"></p>
+            <p id="coordinates"></p>
+        </section>
+        <section>
+            <h2>Upcoming Events</h2>
+            <article>
+                <h3>Summer Music Festival</h3>
+                <p class="date">June 15-17, 2023</p>
+                <p class="event-description">
+                    Join us for our annual <span class="highlight">summer music festival</span> featuring local bands and artists. 
+                    This three-day event will showcase a variety of musical genres from jazz to rock. 
+                    Food trucks and craft vendors will be available throughout the weekend.
+                </p>
+            </article>
+            
+            <article>
+                <h3>Farmers Market</h3>
+                <p class="date">Every Saturday, 8am-1pm</p>
+                <p class="event-description">
+                    Our weekly farmers market offers fresh <span class="highlight">local produce</span>, artisan foods, 
+                    and handmade crafts. Meet your neighbors and support local growers 
+                    and makers at this community gathering.
+                </p>
+            </article>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>City Council Office: 123 Main Street</p>
+            <p>Phone: (555) 123-4567</p>
+            <p>Email: info@citycouncil.gov</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Local City Council. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Form confirmation
+        function showConfirmation(event) {
+            event.preventDefault();
+            document.getElementById("confirmationMsg").innerText = "✅ Registration successful! We'll contact you soon.";
+        }
+
+        // Feedback functions
+        function validatePhone() {
+            const phone = document.getElementById("phone").value;
+            if (!/^\d{10}$/.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+            }
+        }
+
+        function showFee() {
+            const fee = document.getElementById("feeSelect").value;
+            document.getElementById("feeDisplay").innerText = "Selected Fee: " + fee;
+        }
+
+        function showFeedbackConfirmation() {
+            alert("Thank you for your feedback!");
+        }
+
+         function enlargeImage(img) {
+            // Create overlay if it doesn't exist
+            const overlay = document.querySelector('.overlay');
+            overlay.style.display = 'block';
+            
+            // Create a copy of the image to enlarge
+            const enlargedImg = img.cloneNode();
+            enlargedImg.classList.add('enlarged');
+            enlargedImg.style.cursor = 'pointer';
+            enlargedImg.ondblclick = function() {
+                closeEnlarged();
+            };
+            
+            // Add to body
+            document.body.appendChild(enlargedImg);
+        }
+        
+        function closeEnlarged() {
+            const overlay = document.querySelector('.overlay');
+            overlay.style.display = 'none';
+            
+            const enlargedImg = document.querySelector('.enlarged');
+            if (enlargedImg) {
+                enlargedImg.remove();
+            }
+        }
+        
+        // For gallery images - add this to make all gallery images enlargeable
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryImages = document.querySelectorAll('.event-img');
+            galleryImages.forEach(img => {
+                img.ondblclick = function() {
+                    enlargeImage(this);
+                };
+            });
+        });
+
+        function countChars() {
+            const text = document.getElementById("feedbackText").value;
+            document.getElementById("charCount").innerText = text.length;
+        }
+
+        // Video functions
+        function videoReadyMessage() {
+            document.getElementById("videoStatus").innerText = "✅ Video ready to play!";
+        }
+
+        window.onbeforeunload = function () {
+            return "Are you sure you want to leave? Your form may be incomplete.";
+        };
+
+        // Preferences functions
+        function savePreference() {
+            const eventType = document.getElementById("preferredEvent").value;
+            if (eventType) {
+                localStorage.setItem("preferredEventType", eventType);
+                sessionStorage.setItem("lastSelected", eventType);
+                document.getElementById("savedPreferenceMessage").innerText =
+                    "✅ Preference saved: " + eventType;
+            }
+        }
+
+        function loadPreference() {
+            const savedType = localStorage.getItem("preferredEventType");
+            if (savedType) {
+                document.getElementById("preferredEvent").value = savedType;
+                document.getElementById("savedPreferenceMessage").innerText =
+                    "🎉 Welcome back! We pre-selected: " + savedType;
+            }
+        }
+
+        function clearPreferences() {
+            localStorage.clear();
+            sessionStorage.clear();
+            document.getElementById("savedPreferenceMessage").innerText =
+                "❌ Preferences cleared.";
+            document.getElementById("preferredEvent").value = "";
+        }
+
+        // Geolocation functions
+        function getLocation() {
+            const status = document.getElementById("locationStatus");
+            const coords = document.getElementById("coordinates");
+
+            if (!navigator.geolocation) {
+                status.innerText = "❌ Geolocation is not supported by your browser.";
+                return;
+            }
+
+            status.innerText = "📡 Locating...";
+
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    status.innerText = "✅ Location found!";
+                    coords.innerText = "Latitude: " + latitude + ", Longitude: " + longitude;
+                },
+                function (error) {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            status.innerText = "🚫 Permission denied.";
+                            break;
+                        case error.TIMEOUT:
+                            status.innerText = "⏳ Location request timed out.";
+                            break;
+                        default:
+                            status.innerText = "⚠️ An unknown error occurred.";
+                    }
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                }
+            );
+        }
+
+        // Load preferences when page loads
+        window.onload = loadPreference;
+    </script>
+</body>
+</html>
