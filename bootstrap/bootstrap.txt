@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap CDN</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <h1 class="text-center">Hello, Bootstrap 5!</h1>
+</body>
+</html>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4">Column 1</div>
+    <div class="col-12 col-sm-6 col-md-4">Column 2</div>
+    <div class="col-12 col-sm-6 col-md-4">Column 3</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">Sidebar</div>
+    <div class="col-md-9">Main Content</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-3">1</div>
+  <div class="col-sm-3">2</div>
+  <div class="col-sm-3">3</div>
+  <div class="col-sm-3">4</div>
+</div>
+
+<div class="row justify-content-center align-items-center" style="height: 200px;">
+  <div class="col-6">Centered Content</div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 order-md-2">Second on medium and up</div>
+  <div class="col-md-6 order-md-1">First on medium and up</div>
+</div>
+
+<nav class="d-flex flex-column flex-md-row bg-light p-3">
+  <a href="#" class="p-2">Home</a>
+  <a href="#" class="p-2">About</a>
+</nav>
+
+<div class="card d-flex justify-content-between align-items-center p-3">
+  <div>Left</div>
+  <div>Right</div>
+</div>
+
+<div class="container">
+  <h1 class="display-1">Heading</h1>
+  <p class="lead text-muted fw-bold">Lead text</p>
+</div>
+
+<p class="text-uppercase">uppercase</p>
+<p class="text-lowercase">LOWERCASE</p>
+<p class="text-capitalize">capitalize me</p>
+
+<form>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name">
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="check1">
+    <label class="form-check-label" for="check1">Agree</label>
+  </div>
+</form>
+
+<form>
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+    <label for="floatingInput">Email address</label>
+  </div>
+</form>
+
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-outline-secondary">Outline</button>
+
+<div class="btn-group">
+  <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btncheck1">Toggle</label>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Logo</a>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search">
+    </form>
+  </div>
+</nav>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item"><a class="nav-link active" href="#">Tab 1</a></li>
+  <li class="nav-item"><a class="nav-link" href="#">Tab 2</a></li>
+</ul>
+
+<div class="card" style="width: 18rem;">
+  <img src="image.jpg" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">Profile</h5>
+  </div>
+</div>
+
+<div class="media">
+  <img src="image.jpg" class="mr-3" style="width: 64px;">
+  <div class="media-body">Media content</div>
+</div>
+
+<div class="m-3 mt-4 p-2 py-5">Spacing Example</div>
+
+<div class="bg-primary text-white p-3">Dashboard</div>
+<div class="bg-dark bg-gradient text-white p-3">Dark Gradient</div>
+
+<div class="d-none d-md-block d-lg-flex">Responsive Visibility</div>
+
+<div class="d-none d-md-block">Sidebar visible on md+</div>
+
+<img src="image.jpg" class="border border-primary border-3 rounded-circle">
+
+<div class="card shadow shadow-lg rounded-pill p-3">Card Content</div>
+
+<footer class="position-fixed bottom-0 w-100 bg-dark text-white text-center p-2">Fixed Footer</footer>
+
+<div class="position-relative">
+  <img src="image.jpg" class="img-fluid">
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">New</span>
+</div>
+
+<footer>
+  <a href="#"><i class="bi bi-facebook"></i></a>
+  <a href="#"><i class="bi bi-twitter"></i></a>
+</footer>
+
+<button class="btn btn-primary"><i class="bi bi-house"></i></button>
+
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Open Modal</button>
+<div class="modal fade" id="myModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content"><div class="modal-body">Modal Content</div></div></div>
+</div>
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Accordion Item</button></h2>
+    <div id="collapseOne" class="accordion-collapse collapse show"><div class="accordion-body">Content</div></div>
+  </div>
+</div>
+
